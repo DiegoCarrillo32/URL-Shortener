@@ -9,6 +9,9 @@ router.get('/', ( req , res )=>{
     res.send('Url shortener server is live!');
 } );
 
+
+
+
 // Returns all shortened urls
 router.get('/urls', async ( req, res )=>{
     
@@ -30,6 +33,7 @@ router.get('/:short', async (  req, res )=>{
     
 })
 
+
 // Posts a shortened url
 router.post('/add', async ( req , res )=>{
     req.body.short = shortid.generate()
@@ -44,7 +48,7 @@ router.post('/add', async ( req , res )=>{
 
 
 router.delete('/:id', async( req, res )=>{
-    const deleteUrl = req.params._id;
+    const deleteUrl = req.params.id;
     await urlModel.deleteOne({_id : deleteUrl});
     
     res.send("Deleted");
@@ -53,8 +57,13 @@ router.delete('/:id', async( req, res )=>{
 router.put('/:id', async ( req, res )=>{
     const id = req.params.id;
     const body = req.body
-    await urlModel.findOneAndUpdate({_id:id}, body)
-    res.send("Modified")
+    await urlModel.findOneAndUpdate({short:id}, body)
+    res.send("Ok")
 })
+
+
+
+
+
 
 module.exports = router;

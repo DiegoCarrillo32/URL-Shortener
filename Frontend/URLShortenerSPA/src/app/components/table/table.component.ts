@@ -24,11 +24,10 @@ export class TableComponent implements OnInit {
       ...urlshort,
       visits:cont,
     }
-    console.log(newUrl);
     
-    this.urlService.moreVisits(newUrl).subscribe( () => {
+    this.urlService.moreVisits(newUrl).subscribe( (res) => {
       this.urlService.getUrls();
-      window.open(newUrl.url)
+      this.router.navigate([`${newUrl.short}`])
     } )
     
 

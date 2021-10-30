@@ -12,7 +12,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     ShortenerComponent,
-    TableComponent
+    TableComponent,
+    
   ],
   imports: [
     CommonModule,

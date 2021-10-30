@@ -1,8 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const app = express();
@@ -13,6 +11,7 @@ mongoose.connect('mongodb://localhost/URLShortener').then(
 )
 // Import Routes
 const index = require('./routes/index');
+const users = require('./routes/users')
 // Settings
 app.set('port', process.env.PORT || 3000)
 
@@ -23,8 +22,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 // Routes
-app.use('/', index);
-
+app.use('/urls', index);
+app.use('/users', users)
 // Starts server
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`);
