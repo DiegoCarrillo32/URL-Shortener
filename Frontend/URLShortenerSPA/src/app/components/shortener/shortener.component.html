@@ -1,0 +1,26 @@
+<div class="row m-5">
+  <div class="col">
+    <form autocomplete="off" (ngSubmit)="sendData()" [formGroup]="urlForm">
+      <div class="mb-3 row">
+        <label class="col-sm-1 col-form-label">Url:</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            formControlName="url"
+            class="form-control"
+            placeholder="Paste url to shorten"
+          />
+        </div>
+        <div class="col">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+            [disabled]="urlForm.invalid"
+          >
+            Shorten
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
