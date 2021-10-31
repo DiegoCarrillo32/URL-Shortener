@@ -9,20 +9,11 @@ export class UrlShortenerService {
   public urlList: UrlShort[] = [];
   constructor(private http: HttpClient) { }
 
-  public getUrls(){
-    this.http.get<UrlShort[]>(`${environment.uri}/urls/urls`)
-    .subscribe( (res) => {
-      this.urlList = res
-      this.urlList.sort( (a,b) => {
-        return b.visits - a.visits
-      } )
-      
-      
-    } )
-  }
   public getMostPopularUrls(){
     
-    return this.http.get<UrlShort[]>(`${environment.uri}/urls/urls`)
+    this.http.get<UrlShort[]>(`${environment.uri}/urls/urls`).subscribe( (res) => {
+      this.urlList = res;
+    } )
 
   }
   public getLongUrl(short:string){
@@ -42,7 +33,4 @@ export class UrlShortenerService {
     return this.http.put(`${environment.uri}/urls/${newUrlShort.short}`, newUrlShort, {responseType:'text'});
   }
  
-  // public deleteShortUrl(_id:string){
-  //   return this.http.delete(`${environment.uri + '/deleteurl'}`)
-  // }
 }

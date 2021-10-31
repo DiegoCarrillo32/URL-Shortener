@@ -1,7 +1,7 @@
 const express = require('express');
-const morgan = require('morgan');
+const morgan = require('morgan');//used to print in console petitions recieved
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('cors');//used to traspass cors policy
 
 const app = express();
 mongoose.connect('mongodb://localhost/URLShortener').then(

@@ -1,0 +1,16 @@
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    height: 80px;
+    margin-bottom: 5%;
+  }
+  
+.topnav-text{
+    align-self: center;
+    color: white;
+}
+.button{
+    margin: 10px;
+    float: right;
+}
+  

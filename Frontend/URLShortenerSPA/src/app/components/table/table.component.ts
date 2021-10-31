@@ -15,7 +15,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.urlService.getUrls()
+    this.urlService.getMostPopularUrls()
   }
 
   public redirectCode(urlshort:any):void{
@@ -25,8 +25,8 @@ export class TableComponent implements OnInit {
       visits:cont,
     }
     
-    this.urlService.moreVisits(newUrl).subscribe( (res) => {
-      this.urlService.getUrls();
+    this.urlService.moreVisits(newUrl).subscribe( () => {
+      this.urlService.getMostPopularUrls();
       this.router.navigate([`${newUrl.short}`])
     } )
     

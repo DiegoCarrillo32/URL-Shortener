@@ -1,5 +1,4 @@
-<div class="m-5">
-
+  <h2>Top 20 visited links</h2>
   <table mat-table #table [dataSource]="this.urlService.urlList">
       <ng-container matColumnDef="visits" >
         <th mat-header-cell *matHeaderCellDef>Visits</th>
@@ -28,5 +27,3 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
     </table>
-</div>
-  

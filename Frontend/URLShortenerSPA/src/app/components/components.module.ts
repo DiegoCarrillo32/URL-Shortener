@@ -6,6 +6,7 @@ import { TableComponent } from './table/table.component';
 import { MaterialModule } from '../modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { TopbarComponent } from './topbar/topbar.component';
 
 
 
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     ShortenerComponent,
     TableComponent,
+    TopbarComponent,
     
   ],
   imports: [
@@ -25,7 +27,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports:[
     ShortenerComponent,
-    TableComponent
+    TableComponent,
+    TopbarComponent
   ]
 })
 export class ComponentsModule { }

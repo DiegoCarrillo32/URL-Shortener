@@ -13,7 +13,6 @@ import { LoginComponent } from './views/login/login.component';
 import { LinkshortenerComponent } from './views/linkshortener/linkshortener.component';
 import { RouterModule } from '@angular/router';
 import { RedirectComponent } from './views/redirect/redirect.component';
-import { RankingComponent } from './views/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import { RankingComponent } from './views/ranking/ranking.component';
     LoginComponent,
     LinkshortenerComponent,
     RedirectComponent,
-    RankingComponent,
+    
   ],
   imports: [
     BrowserModule,

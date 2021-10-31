@@ -1,7 +1,8 @@
-const express = require('express');
+const express = require('express'); 
+const urlModel = require('../models/url.model');//model for the url data
+const shortid = require('shortid'); //used to generate unique and short ids for the urls
+const validUrl = require('valid-url');//checks if the url recieved is valid or not using the URI Standard (RFC 3986)
 const router = express.Router();
-const urlModel = require('../models/url.model');
-const shortid = require('shortid');
 
 // Checks if server is live
 router.get('/', ( req , res )=>{
@@ -9,14 +10,19 @@ router.get('/', ( req , res )=>{
     res.send('Url shortener server is live!');
 } );
 
-
-
+// Returns all urls
+router.get('/all', async(req,res)=>{
+    const urls = await urlModel.find()
+    res.send(urls)
+})
 
 // Returns all shortened urls
 router.get('/urls', async ( req, res )=>{
     
     const urls = await urlModel.find();
-    
+    urls.sort( (a,b) => {
+      return b.visits - a.visits
+    } ).splice(20)
     res.send(urls);
 } );
 
@@ -26,7 +32,7 @@ router.get('/:short', async (  req, res )=>{
     const url = await urlModel.findOne({short: shortId})
     if(url){
         return res.send(url.url);
-        // return res.redirect(url.url);
+        
     }else {
         return res.status(400)
     }
@@ -36,24 +42,29 @@ router.get('/:short', async (  req, res )=>{
 
 // Posts a shortened url
 router.post('/add', async ( req , res )=>{
-    req.body.short = shortid.generate()
-    console.log(req.body);
-    const url = new urlModel(req.body);
-    await url.save();
+    if(validUrl.isUri(req.body.url)){
+        req.body.short = shortid.generate()
+        console.log(req.body);
+        const url = new urlModel(req.body);
+        await url.save();
+        res.send(url);        
+    }else{
+        res.send("Not Valid Url")
+    }
     
     
-    res.send(url);
+
 } );
 
 
-
+// Deletes a specific url
 router.delete('/:id', async( req, res )=>{
     const deleteUrl = req.params.id;
     await urlModel.deleteOne({_id : deleteUrl});
     
     res.send("Deleted");
 })
-
+// Edits a specific url
 router.put('/:id', async ( req, res )=>{
     const id = req.params.id;
     const body = req.body

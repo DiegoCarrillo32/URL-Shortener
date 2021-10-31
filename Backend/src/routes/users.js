@@ -1,16 +1,17 @@
+const userModel = require('../models/user.model')
 const express = require('express');
 const router = express.Router();
-const userModel = require('../models/user.model')
-// Gets all registered users
+// Returns all registered users
 router.get('/', (req,res) => {
     res.send("Users is live")
 })
+// Returns all users
 router.get('/users', async (req,res)=>{
     
     const users =  await userModel.find()
     res.send(users);
 })
-// Gets specific user
+// Returns specific user
 router.get('/signin/:username/:password', async ( req, res )=>{
     const username = req.params.username;
     const password = req.params.password;

@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.loginService.signIn(username, password).subscribe( (res) => {
       if(res === "true"){
         localStorage.setItem("session", "on")
+        this.loginService.session = localStorage.getItem("session");
         this.router.navigate(['/urlshortener']);
       }else{
         console.log(res);

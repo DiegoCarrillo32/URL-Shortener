@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LinkshortenerComponent } from './views/linkshortener/linkshortener.component';
 import { LoginComponent } from './views/login/login.component';
 import { RedirectComponent } from './views/redirect/redirect.component';
-import { RankingComponent } from './views/ranking/ranking.component';
 
 const routes: Routes = [
   {
@@ -15,10 +14,6 @@ const routes: Routes = [
   {
     path:'urlshortener',
     component:LinkshortenerComponent
-  },
-  {
-    path:'ranking',
-    component:RankingComponent
   },
   {
     path:':shortcode',

@@ -1,0 +1,12 @@
+<div class="topnav">
+    <div class="row">
+        <div class="col">
+            <h1 class="topnav-text">URL SHORTENER</h1>
+            
+        </div>
+        <div class="col" *ngIf="loginService.session">
+            <button class="button" mat-button (click)="loginService.signOut()">log out</button>
+        </div>
+    </div>
+    
+</div>
