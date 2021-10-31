@@ -1,5 +1,5 @@
-  <h2>Top 20 visited links</h2>
-  <table mat-table #table [dataSource]="this.urlService.urlList">
+  
+  <table mat-table #table [dataSource]="data">
       <ng-container matColumnDef="visits" >
         <th mat-header-cell *matHeaderCellDef>Visits</th>
         <td mat-cell *matCellDef="let element" >

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UrlShortenerService } from '../../services/url-shortener.service';
 import { UrlShort } from '../../interfaces/urlshort.interface';
@@ -9,13 +9,12 @@ import { UrlShort } from '../../interfaces/urlshort.interface';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-
+  @Input() data:UrlShort[] = []
   public displayedColumns: string[] = ['visits', 'short', 'url'];
   constructor(public urlService:UrlShortenerService, private router: Router) { }
 
   ngOnInit(): void {
     
-    this.urlService.getMostPopularUrls()
   }
 
   public redirectCode(urlshort:any):void{

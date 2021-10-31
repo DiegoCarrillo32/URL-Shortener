@@ -18,13 +18,12 @@ export class ShortenerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  private validUrl = ["www", "com", "org", ]
+  
   public urlForm: FormGroup = this.formBuilder.group({
     url: [],
   });
 
   public sendData(): void {
-    const url = this.urlForm?.controls.url.value as string
     
     const urlshort = {
       visits: 0,
@@ -34,12 +33,13 @@ export class ShortenerComponent implements OnInit {
     this.urlService.postUrlShort(urlshort).subscribe((res) => {
       this.getData()
       this.urlForm.reset()
-      console.log(res);
+      
     });
   }
 
   public getData() {
     this.urlService.getMostPopularUrls()
+    this.urlService.getAll()
   }
 
 }

@@ -1,2 +1,6 @@
 <app-shortener></app-shortener>
-<app-table></app-table>
+<h2>Top 20 visited links</h2>
+<app-table [data]="this.urlsService.top"></app-table>
+
+<h2 style="margin-top: 20px;">All links shortened</h2>
+<app-table [data]="this.urlsService.data"></app-table>
